@@ -23,14 +23,18 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run migrations
+      - name: Run migrations and create superuser
         run: |
           python manage.py migrate --noinput
-          echo "from django.contrib.auth import get_user_model; \
-                User = get_user_model(); \
-                User.objects.filter(username='admin').exists() or \
-                User.objects.create_superuser('admin', 'nisheshp20@gmail.com', 'Nishesh@@123')" \
-          | python manage.py shell
+          python manage.py shell <<EOF
+          from django.contrib.auth import get_user_model
+          User = get_user_model()
+          if not User.objects.filter(username="admin").exists():
+              User.objects.create_superuser("admin", "nisheshp20@gmail.com", "Nishesh@@123")
+              print("Superuser created successfully")
+          else:
+              print("Superuser already exists")
+          EOF
 
       - name: Collect static files
         run: python manage.py collectstatic --noinput
