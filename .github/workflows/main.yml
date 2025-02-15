@@ -43,6 +43,11 @@ jobs:
             sudo ./aws/install
           fi
 
+      - name: Install AWS Elastic Beanstalk CLI
+        run: |
+          pip install awsebcli --upgrade --user
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v3
         with:
@@ -50,7 +55,8 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
+      - name: Initialize Elastic Beanstalk
+        run: eb init demo --platform "Python 3.9" --region ${{ secrets.AWS_REGION }}
+
       - name: Deploy to Elastic Beanstalk
-        run: |
-          eb init demo --platform "Python 3.9" --region ${{ secrets.AWS_REGION }}
-          eb deploy Demo-env
+        run: eb deploy Demo-env
