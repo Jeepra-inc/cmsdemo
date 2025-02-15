@@ -24,7 +24,13 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run migrations
-        run: python manage.py migrate --noinput
+        run: |
+          python manage.py migrate --noinput
+          echo "from django.contrib.auth import get_user_model; \
+                User = get_user_model(); \
+                User.objects.filter(username='admin').exists() or \
+                User.objects.create_superuser('admin', 'nisheshp20@gmail.com', 'Nishesh@@123')" \
+          | python manage.py shell
 
       - name: Collect static files
         run: python manage.py collectstatic --noinput
