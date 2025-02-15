@@ -1,0 +1,19 @@
+# Django
+*.sqlite3
+*.pyc
+__pycache__/
+migrations/
+
+# Virtual Environment
+venv/
+env/
+.myvenv/
+.vscode/
+
+# IDE specific files
+.idea/
+.DS_Store
+
+# Environment variables
+.env
+.env.local
