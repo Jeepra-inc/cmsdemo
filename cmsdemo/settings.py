@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-#xgd%^*2xyfyhg77)+i54ti^0r8xx8@)-=!b%addwa56kjagg7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['demo-env.eba-8mehzrcb.us-west-2.elasticbeanstalk.com', '127.0.0.1']
+ALLOWED_HOSTS = ['demo-env.eba-8mehzrcb.us-west-2.elasticbeanstalk.com', '127.0.0.1', 'jeepra.com.np', 'www.jeepra.com.np']
 
 
 # Application definition
