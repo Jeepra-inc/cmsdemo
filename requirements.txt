@@ -5,6 +5,7 @@ aiosignal==1.3.2
 airportsdata==20241001
 annotated-types==0.7.0
 anyio==4.8.0
+django-axes==7.0.1
 asgiref==3.8.1
 astor==0.8.1
 attrs==24.3.0
