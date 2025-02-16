@@ -106,7 +106,6 @@ pyasn1==0.6.1
 pyasn1_modules==0.4.1
 PyAutoGUI==0.9.54
 pycountry==24.6.1
-psycopg2==2.9.10
 pydantic==2.10.6
 pydantic_core==2.27.2
 PyGetWindow==0.0.9
