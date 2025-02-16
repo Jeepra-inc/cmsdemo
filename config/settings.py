@@ -126,8 +126,7 @@ DJOSER = {
     "PASSWORD_RESET_SHOW_EMAIL_NOT_FOUND": False,
     "USERNAME_RESET_CONFIRM_URL": "confirm-reset-email?uid={uid}&token={token}",
     'TOKEN_MODEL': None, 
-    'SOCIAL_AUTH_ALLOWED_REDIRECT_URIS': getenv('REDIRECT_URLS').split(','), 
-    'LOGIN_FIELD': 'email', 
+    'SOCIAL_AUTH_ALLOWED_REDIRECT_URIS': getenv('REDIRECT_URLS', 'http://example.com:3000/auth/google,http://example.com:3000/auth/facebook').split(','),    'LOGIN_FIELD': 'email', 
     'USER_ID_FIELD': 'id', 
     'EMAIL': {
         'password_reset': 'users.emails.CustomPasswordResetEmail', 
