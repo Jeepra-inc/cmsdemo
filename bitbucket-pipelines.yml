@@ -1,0 +1,23 @@
+image: python:3.9
+
+pipelines:
+  branches:
+    main:
+      - step:
+          name: Install dependencies and run tests
+          caches:
+            - pip
+          script:
+            - pip install --upgrade pip
+            - pip install -r requirements.txt
+            - python manage.py test
+
+      - step:
+          name: Install AWS CLI and deploy to Elastic Beanstalk
+          deployment: production
+          script:
+            - apt-get update && apt-get install -y awscli # Install AWS CLI
+            - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+            - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+            - aws configure set region $AWS_DEFAULT_REGION
+            - aws elasticbeanstalk update-environment --environment-name Jeepra-env --version-label jeepra-version-1
