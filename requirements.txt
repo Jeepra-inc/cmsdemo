@@ -31,6 +31,7 @@ diskcache==5.6.3
 distlib==0.3.9
 distro==1.9.0
 Django
+django-tenants==3.7.0
 django-cors-headers==4.6.0
 djangorestframework==3.15.2
 djangorestframework_simplejwt==5.4.0
